@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="20231102_001_magda" author="magda">
+        <createTable tableName="people">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="version" type="BIGINT"/>
+            <column name="type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="pesel" type="VARCHAR(11)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UC_PERSON_PESEL"/>
+            </column>
+            <column name="height" type="INTEGER"/>
+            <column name="weight" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20231102_002_magda" author="magda">
+        <addColumn tableName="people">
+            <column name="university_name_id" type="INTEGER"/>
+            <column name="field_of_study_id" type="INTEGER"/>
+            <column name="enrollment_year" type="INTEGER"/>
+            <column name="scholarship" type="DOUBLE"/>
+        </addColumn>
+        <update tableName="people">
+            <column name="type" value="Student"/>
+        </update>
+    </changeSet>
+
+    <changeSet id="20231102_003_magda" author="magda">
+        <addColumn tableName="people">
+            <column name="employment_start_date" type="DATE">
+                <constraints nullable="true"/>
+            </column>
+            <column name="current_position_id" type="INTEGER"/>
+            <column name="current_salary" type="DOUBLE"/>
+        </addColumn>
+        <update tableName="people">
+            <column name="type" value="Employee"/>
+        </update>
+    </changeSet>
+
+    <changeSet id="20231102_004_magda" author="magda">
+        <addColumn tableName="people">
+            <column name="years_of_work" type="INTEGER">
+            </column>
+            <column name="pension" type="DOUBLE"/>
+        </addColumn>
+        <update tableName="people">
+            <column name="type" value="Retiree"/>
+        </update>
+    </changeSet>
+
+    <changeSet id="20231102_005_magda" author="magda">
+        <createTable tableName="employee_position">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="employee_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="position_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="DATE"/>
+            <column name="end_date" type="DATE"/>
+            <column name="salary" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
