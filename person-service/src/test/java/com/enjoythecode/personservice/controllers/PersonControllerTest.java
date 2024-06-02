@@ -1,5 +1,16 @@
 package com.enjoythecode.personservice.controllers;
 
+import com.enjoythecode.personservice.PersonServiceApplication;
+import com.enjoythecode.personservice.api.DictionaryServiceClient;
+import com.enjoythecode.personservice.command.CreateEmployeeCommand;
+import com.enjoythecode.personservice.command.CreatePersonCommand;
+import com.enjoythecode.personservice.command.UpdateEmployeeCommand;
+import com.enjoythecode.personservice.command.UpdatePersonCommand;
+import com.enjoythecode.personservice.dto.DictionarySimpleDto;
+import com.enjoythecode.personservice.dto.DictionaryValueSimpleDto;
+import com.enjoythecode.personservice.model.Employee;
+import com.enjoythecode.personservice.model.Student;
+import com.enjoythecode.personservice.repository.PersonRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,17 +27,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import com.enjoythecode.personservice.PersonServiceApplication;
-import com.enjoythecode.personservice.api.DictionaryServiceClient;
-import com.enjoythecode.personservice.command.CreateEmployeeCommand;
-import com.enjoythecode.personservice.command.CreatePersonCommand;
-import com.enjoythecode.personservice.command.UpdateEmployeeCommand;
-import com.enjoythecode.personservice.command.UpdatePersonCommand;
-import com.enjoythecode.personservice.dto.DictionarySimpleDto;
-import com.enjoythecode.personservice.dto.DictionaryValueSimpleDto;
-import com.enjoythecode.personservice.model.Employee;
-import com.enjoythecode.personservice.model.Student;
-import com.enjoythecode.personservice.repository.PersonRepository;
 
 import java.time.LocalDate;
 
@@ -364,7 +364,7 @@ class PersonControllerTest {
         String jsonForTest = objectMapper.writeValueAsString(updateEmployeeCommandForTest);
         //when
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
-                .put("/api/people")
+                .put("/api/people/" + id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonForTest));
         //then
@@ -409,7 +409,7 @@ class PersonControllerTest {
         //first update attempt
         String jsonForTest1 = objectMapper.writeValueAsString(updateEmployeeCommandFoTest1);
         mockMvc.perform(MockMvcRequestBuilders
-                .put("/api/people")
+                .put("/api/people/" + id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonForTest1))
                 .andExpect(status().isOk());
@@ -417,7 +417,7 @@ class PersonControllerTest {
         //second update attempt
         String jsonForTest2 = objectMapper.writeValueAsString(updateEmployeeCommandFoTest2);
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
-                .put("/api/people")
+                .put("/api/people/" + id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonForTest2));
         //then
@@ -446,7 +446,7 @@ class PersonControllerTest {
         //when
         String jsonForTest = objectMapper.writeValueAsString(updateEmployeeCommandForTest);
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
-                .put("/api/people")
+                .put("/api/people/" + 10)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonForTest));
         //then
@@ -486,7 +486,7 @@ class PersonControllerTest {
         //when
         String jsonForTest = objectMapper.writeValueAsString(updateEmployeeCommandForTest);
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
-                .put("/api/people")
+                .put("/api/people/" + id2)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonForTest));
         //then
@@ -519,7 +519,7 @@ class PersonControllerTest {
         //when
         String jsonForTest = objectMapper.writeValueAsString(updateEmployeeCommandForTest);
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
-                .put("/api/people")
+                .put("/api/people/" + employeeId)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonForTest));
         //then

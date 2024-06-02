@@ -1,13 +1,5 @@
 package com.enjoythecode.personservice.service;
 
-import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.orm.ObjectOptimisticLockingFailureException;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.enjoythecode.personservice.api.DictionaryServiceClient;
 import com.enjoythecode.personservice.command.CreatePersonCommand;
 import com.enjoythecode.personservice.command.UpdatePersonCommand;
@@ -20,6 +12,14 @@ import com.enjoythecode.personservice.factory.specification.PersonSearchSpecific
 import com.enjoythecode.personservice.factory.updater.PersonUpdaterFactory;
 import com.enjoythecode.personservice.model.Person;
 import com.enjoythecode.personservice.repository.PersonRepository;
+import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 import java.util.Objects;
@@ -45,7 +45,9 @@ public class PersonService {
         return personRepository.findAll(specification, pageable);
     }
 
-    public Person edit(UpdatePersonCommand command) {
+    public Person edit(Long id, UpdatePersonCommand command) {
+        if (!id.equals(command.getId()))
+            throw new InvalidIdException("Identifiers provided in path variable and request body do not match");
         Person personForUpdate = personRepository.findById(
                 Optional.ofNullable(command.getId())
                         .orElseThrow(() -> new InvalidIdException("Wrong id!")))

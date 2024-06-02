@@ -99,10 +99,11 @@ public class PersonController {
         return ResponseEntity.ok(new StatusDto("New person type '" + name + "' added to 'type' dictionary."));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @ApiOperation(value = "Update person data", response = PersonDto.class)
-    public ResponseEntity<PersonDto> updatePerson(@RequestBody @Valid UpdatePersonCommand updatePersonCommand) {
-        Person personForUpdate = personService.edit(updatePersonCommand);
+    public ResponseEntity<PersonDto> updatePerson(@PathVariable("id") Long id,
+                                                  @RequestBody @Valid UpdatePersonCommand updatePersonCommand) {
+        Person personForUpdate = personService.edit(id, updatePersonCommand);
         PersonDto personDto = personDtoConverterFactory.convert(personForUpdate);
         return ResponseEntity.ok(personDto);
     }
