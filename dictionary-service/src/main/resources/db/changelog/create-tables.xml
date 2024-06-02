@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="20240602_001_magda" author="magda">
+        <createTable tableName="dictionary">
+            <column name="id_dictionary" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true" />
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UC_DICTIONARY_NAME" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20240602_002_magda" author="magda">
+        <createTable tableName="dictionary_value">
+            <column name="id_dictionary_value" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="dictionary_id" type="BIGINT">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20240602_003_magda" author="magda">
+        <addForeignKeyConstraint baseColumnNames="dictionary_id"
+                                 baseTableName="dictionary_value"
+                                 constraintName="fk_dictionary_value_dictionary"
+                                 referencedColumnNames="id_dictionary"
+                                 referencedTableName="dictionary"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE" />
+    </changeSet>
+</databaseChangeLog>
