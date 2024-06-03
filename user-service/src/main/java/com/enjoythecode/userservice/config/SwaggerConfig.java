@@ -16,7 +16,7 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("pl.kurs.userservice"))
+                .apis(RequestHandlerSelectors.basePackage("com.enjoythecode.userservice"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
