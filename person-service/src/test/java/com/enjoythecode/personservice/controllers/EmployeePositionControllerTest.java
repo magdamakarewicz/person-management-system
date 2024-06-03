@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -57,6 +58,7 @@ class EmployeePositionControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldReturnOkStatusWhenAddCorrectNewPositionToEmployee() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -97,6 +99,7 @@ class EmployeePositionControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldReturnBadRequestWhenAddNewPositionToEmployeeWithPositionWithoutEndDate() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -137,6 +140,7 @@ class EmployeePositionControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldReturnBadRequestWhenAddNewPositionWithStartDateBeforeEmploymentStartDate() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -174,6 +178,7 @@ class EmployeePositionControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldReturnBadRequestWhenAddNewPositionIfNewPositionOverlapsExistingOne() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -215,6 +220,7 @@ class EmployeePositionControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldReturnNotFoundWhenAddPositionThatNotExist() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -252,6 +258,7 @@ class EmployeePositionControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldReturnOkStatusWhenAddCorrectEndDateAfterStartDateForCurrentPosition() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -293,6 +300,7 @@ class EmployeePositionControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldReturnBadRequestWhenAddEmptyEndDateForPositionWhenUpdate() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -329,6 +337,7 @@ class EmployeePositionControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldReturnListOfPositionsWhenGetAllEmployeePositionsByEmployeeId() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -368,6 +377,7 @@ class EmployeePositionControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldReturnBadRequestWhenPositionNotBelongsToEmployeeWithProvidedId() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -404,6 +414,7 @@ class EmployeePositionControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldDeleteEmployeePositionById() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -433,6 +444,7 @@ class EmployeePositionControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldReturnNotFoundStatusForNotExistingIdWhenGetAllByEmployeeId() throws Exception {
         //given
         int employeeId = 10;

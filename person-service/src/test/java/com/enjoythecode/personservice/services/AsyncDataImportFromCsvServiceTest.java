@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -41,6 +42,7 @@ class AsyncDataImportFromCsvServiceTest {
     }
 
     @Test
+    @WithMockUser(username = "importer", roles = "IMPORTER")
     public void shouldPerformAsyncImportAndAllowImportStatusCheckWhileImportIsInProgress() throws Exception {
         // given
         String fileContent = "type,first_name,last_name,pesel,height,weight,email,param1,param2,param3,param4" +

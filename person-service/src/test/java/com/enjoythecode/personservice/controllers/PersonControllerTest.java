@@ -22,6 +22,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -58,6 +59,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldGetPersonByFirstName() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -78,6 +80,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldGetAllPeopleByEmployeeType() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -126,6 +129,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldGetSinglePersonByEmployeeTypeAndName() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -171,6 +175,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldGetSinglePersonByLastNameAndWeightRange() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -210,6 +215,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldGetSinglePersonByStudentTypeAndLastNameAndSex() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -261,6 +267,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldGetSingleEmployeeByPositionAndEmploymentStartDateRange() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -301,6 +308,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldGetSingleEmployeeByPositionAndFirstName() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -340,6 +348,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldUpdateEmployeeLastNameAndPositionAndSalary() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -381,6 +390,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldReturnConflictStatusForOptimisticLockingExceptionWhenUpdateOutOfDateVersion() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -431,6 +441,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldReturnNotFoundStatusForNotExistingIdWhenUpdate() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -459,6 +470,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldReturnConstraintViolationExceptionForTheSamePesel() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -498,6 +510,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldReturnBadRequestForNotValidPeselAndHeightWhenUpdate() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -534,6 +547,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldPaginate10ResultsIntoTwoPagesWith5Results() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -559,6 +573,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldReturnBadRequestStatusForEmptyFileWhenImport() throws Exception {
         //given
         String fileContent = "";
@@ -582,6 +597,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldReturnBadRequestStatusForInvalidFileContentWhenImport() throws Exception {
         //given
         String fileContent = "Invalid CSV Data " +
@@ -605,6 +621,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void shouldAddEmployee() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
@@ -648,6 +665,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldAddNewPersonType() throws Exception {
         //given
         String newType = "guest";
@@ -664,6 +682,7 @@ class PersonControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void shouldDeletePersonById() throws Exception {
         //given
         DictionaryValueSimpleDto employee = new DictionaryValueSimpleDto(1L, "employee");
