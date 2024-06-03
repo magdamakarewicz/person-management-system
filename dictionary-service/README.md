@@ -6,8 +6,6 @@
 - [REST API Endpoints](#rest-api-endpoints)
     - [Dictionary Endpoints](#dictionary-endpoints)
     - [Dictionary Value Endpoints](#dictionary-value-endpoints)
-- [Technologies Used](#technologies-used)
-- [Known Issues and Upcoming Changes](#known-issues-and-upcoming-changes)
 - [Setup and Installation](#setup-and-installation)
     - [Prerequisites](#prerequisites)
     - [Running the Application](#running-the-application)
@@ -125,16 +123,21 @@ The Dictionary Service is a microservice within the Person Management System. It
 
 ### Running the Application
 
-1. Configure the database settings in `application.properties`.
+1. Configure the database settings in `application.properties`:
+- **Test Database**: H2
+- **Production Database**: MySQL
+
 2. Build and run the service:
 
    ```bash
    mvn clean install
    mvn spring-boot:run
+   ```
+
+3. The service will run on port 8082 by default. You can access it at http://localhost:8082.
 
 ### Testing
 
-The User Service includes comprehensive tests. To run the tests, use the following command:
+## Unit and Integration Tests
 
-```bash
-mvn test
+The application includes comprehensive unit and integration tests to ensure functionality and stability. These tests are executed during the build process.

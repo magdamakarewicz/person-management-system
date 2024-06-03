@@ -7,8 +7,6 @@
   - [User Endpoints](#user-endpoints)
   - [Role Endpoints](#role-endpoints)
 - [Security](#security)
-- [Technologies Used](#technologies-used)
-- [Known Issues and Upcoming Changes](#known-issues-and-upcoming-changes)
 - [Setup and Installation](#setup-and-installation)
   - [Prerequisites](#prerequisites)
   - [Running the Application](#running-the-application)
@@ -97,23 +95,6 @@ The User Service is a microservice within the Person Management System. It is re
 - Endpoints are protected with role-based access control:
 - Only users with the `ADMIN` role can manage users and roles.
 
-## Technologies Used
-
-- **Spring Boot**: For building the application.
-- **Spring Security**: For securing the application.
-- **Spring Data JPA**: For database access.
-- **Hibernate**: For ORM.
-- **MySQL**: As the primary database.
-- **H2**: For in-memory database testing.
-- **ModelMapper**: For object mapping.
-- **JUnit**: For testing.
-- **OpenFeign**: For inter-service communication.
-- **Lombok**: To reduce boilerplate code.
-
-## Known Issues and Upcoming Changes
-
-- **API Documentation**: Currently, there are compatibility issues with Swagger and the latest version of Spring. As a result, Swagger will soon be replaced by OpenAPI. This transition will ensure ongoing support and provide enhanced features for API documentation.
-
 ## Setup and Installation
 
 ### Prerequisites
@@ -124,17 +105,21 @@ The User Service is a microservice within the Person Management System. It is re
 
 ### Running the Application
 
-1. Configure the database settings in `application.properties`.
+1. Configure the database settings in `application.properties`:
+- **Test Database**: H2
+- **Production Database**: MySQL
+
 2. Build and run the service:
 
- ```bash
- mvn clean install
- mvn spring-boot:run
-```
+   ```bash
+   mvn clean install
+   mvn spring-boot:run
+   ```
+   
+3. The service will run on port 8081 by default. You can access it at http://localhost:8081.
 
 ### Testing
 
-The User Service includes comprehensive tests. To run the tests, use the following command:
+## Unit and Integration Tests
 
-```bash
-mvn test
+The application includes comprehensive unit and integration tests to ensure functionality and stability. These tests are executed during the build process.
