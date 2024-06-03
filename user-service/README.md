@@ -3,8 +3,6 @@
 ## Table of Contents
 - [Project Description](#project-description)
 - [Features](#features)
-  - [User Management](#user-management)
-  - [Role Management](#role-management)
 - [REST API Endpoints](#rest-api-endpoints)
   - [User Endpoints](#user-endpoints)
   - [Role Endpoints](#role-endpoints)
@@ -36,61 +34,61 @@ The User Service is a microservice within the Person Management System. It is re
 ### User Endpoints
 
 - **Get All Users**
-  GET /api/users
+  `GET /api/users`
   Retrieves a list of all users.
 
 - **Get User by ID**
-  GET /api/users/{userId}
+  `GET /api/users/{userId}`
   Retrieves a user by their ID.
 
 - **Get User by Username**
-  GET /api/users/byUsername?username={username}
+  `GET /api/users/byUsername?username={username}`
   Retrieves a user along with their roles by their username.
 
 - **Create User**
-  POST /api/users
+  `POST /api/users`
   Adds a new user.
 
 - **Update User Password**
-  PUT /api/users/{userId}
+  `PUT /api/users/{userId}`
   Updates the password of an existing user.
 
 - **Delete User by ID**
-  DELETE /api/users/{userId}
+  `DELETE /api/users/{userId}`
   Deletes a user by their ID.
 
 - **Assign Role to User**
-  POST /api/users/{userId}/roles/{roleId} 
-    Assigns a role to a user.
+  `POST /api/users/{userId}/roles/{roleId}`
+  Assigns a role to a user.
 
 - **Remove Role from User**
-  DELETE /api/users/{userId}/roles/{roleId} 
+  `DELETE /api/users/{userId}/roles/{roleId}`
   Removes a role from a user.
 
 ### Role Endpoints
 
 - **Get All Roles**
-  GET /api/roles 
+  `GET /api/roles` 
   Retrieves a list of all roles.
 
 - **Get Role by ID**
-  GET /api/roles/{roleId}
+  `GET /api/roles/{roleId}`
   Retrieves a role by its ID.
 
 - **Create Role**
-  POST /api/roles
+  `POST /api/roles`
   Adds a new role.
 
 - **Update Role**
-  PUT /api/roles/{roleId}
+  `PUT /api/roles/{roleId}`
   Updates the name of an existing role.
 
 - **Delete Role by ID**
-  DELETE /api/roles/{roleId}
+  `DELETE /api/roles/{roleId}`
   Deletes a role by its ID.
 
 - **Get Users by Role**
-  GET /api/roles/{roleId}/users
+  `GET /api/roles/{roleId}/users`
   Retrieves all users assigned to a specific role.
   
 ## Security
@@ -108,7 +106,6 @@ The User Service is a microservice within the Person Management System. It is re
 - **MySQL**: As the primary database.
 - **H2**: For in-memory database testing.
 - **ModelMapper**: For object mapping.
-- **Swagger**: For API documentation.
 - **JUnit**: For testing.
 - **OpenFeign**: For inter-service communication.
 - **Lombok**: To reduce boilerplate code.
