@@ -14,6 +14,7 @@
 - [Testing](#testing)
 - [Example Data](#example-data)
 - [Technical Documentation](#technical-documentation)
+- [API Documentation](#api-documentation)
   
 ## Project Description
 
@@ -207,3 +208,7 @@ It is assumed that the dictionaries should be added to the database in the appro
 ## Classes Using Clients
 
 Classes utilizing Feign clients also contain documentation explaining their interactions and operations.
+
+# API Documentation
+
+The API documentation for the User Service, created using OpenAPI, can be accessed at http://localhost:8083/swagger-ui/index.html. This documentation provides a detailed overview of all available endpoints, their parameters, and responses, enabling easy exploration and testing of the API.
