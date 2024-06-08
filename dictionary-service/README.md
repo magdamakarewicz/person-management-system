@@ -10,6 +10,7 @@
     - [Prerequisites](#prerequisites)
     - [Running the Application](#running-the-application)
     - [Testing](#testing)
+- [API Documentation](#api-documentation)
 
 ## Project Description
 
@@ -141,3 +142,7 @@ The Dictionary Service is a microservice within the Person Management System. It
 ## Unit and Integration Tests
 
 The application includes comprehensive unit and integration tests to ensure functionality and stability. These tests are executed during the build process.
+
+## API Documentation
+
+The API documentation for the Dictionary Service, created using OpenAPI, can be accessed at http://localhost:8082/swagger-ui/index.html. This documentation provides a detailed overview of all available endpoints, their parameters, and responses, enabling easy exploration and testing of the API.
