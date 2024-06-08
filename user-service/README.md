@@ -11,7 +11,8 @@
   - [Prerequisites](#prerequisites)
   - [Running the Application](#running-the-application)
   - [Testing](#testing)
-  
+- [API Documentation](#api-documentation)
+
 ## Project Description
 
 The User Service is a microservice within the Person Management System. It is responsible for managing application users, including their usernames, passwords, and roles. The service ensures secure handling of user credentials by encoding passwords with `PasswordEncoder` and storing all information in a database. Comprehensive tests have been implemented to ensure the reliability of the service.
@@ -123,3 +124,7 @@ The User Service is a microservice within the Person Management System. It is re
 ## Unit and Integration Tests
 
 The application includes comprehensive unit and integration tests to ensure functionality and stability. These tests are executed during the build process.
+
+## API Documentation
+
+The API documentation for the User Service, created using OpenAPI, can be accessed at http://localhost:8081/swagger-ui/index.html. This documentation provides a detailed overview of all available endpoints, their parameters, and responses, enabling easy exploration and testing of the API.
