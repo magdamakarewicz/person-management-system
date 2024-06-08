@@ -9,7 +9,6 @@
 - [Features](#features)
 - [Security](#security)
 - [Technologies Used](#technologies-used)
-- [Known Issues and Upcoming Changes](#known-issues-and-upcoming-changes)
 - [Documentation](#documentation)
   
 ## Project Description
@@ -63,10 +62,7 @@ The Person Service manages information about individuals. It provides endpoints 
 - **Maven**: For build automation.
 - **Postman**: For API testing.
 - **REST API**: For service communication and integration.
-
-## Known Issues and Upcoming Changes
-
-- **API Documentation**: Currently, there are compatibility issues with Swagger and the latest version of Spring. As a result, Swagger will soon be replaced by OpenAPI. This transition will ensure ongoing support and provide enhanced features for API documentation.
+- **OpenAPI**: For API documentation and design.
 
 ## Documentation
 
@@ -75,3 +71,5 @@ Each service has its own README.md file with detailed descriptions, setup instru
 - [Dictionary Service README](dictionary-service/README.md)
 - [User Service README](user-service/README.md)
 - [Person Service README](person-service/README.md)
+
+API documentation for each service is available at http://localhost:{server.port}/swagger-ui/index.html after starting the respective service.
