@@ -17,7 +17,7 @@ public class Employee extends Person {
     private LocalDate employmentStartDate;
 
     /**
-     * ID of the person's type in the 'position' dictionary ('position' dictionary ID in dictionarydb is 2).
+     * ID of the employee's current position in the 'position' dictionary ('position' dictionary ID in dictionarydb is 2).
      */
     @Column(name = "current_position_id")
     private Long currentPositionId;

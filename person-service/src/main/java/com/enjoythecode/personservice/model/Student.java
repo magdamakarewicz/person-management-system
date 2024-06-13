@@ -13,7 +13,8 @@ import lombok.*;
 public class Student extends Person {
 
     /**
-     * ID of the person's type in the 'university name' dictionary ('university name' dictionary ID in dictionarydb is 3).
+     * ID of the student's university name in the 'university name' dictionary
+     * ('university name' dictionary ID in dictionarydb is 3).
      */
     @Column(name = "university_name_id")
     private Long universityNameId;
@@ -21,7 +22,8 @@ public class Student extends Person {
     private Integer enrollmentYear;
 
     /**
-     * ID of the person's type in the 'field of study' dictionary ('field of study' dictionary ID in dictionarydb is 4).
+     * ID of the student's field of study in the 'field of study' dictionary
+     * ('field of study' dictionary ID in dictionarydb is 4).
      */
     @Column(name = "field_of_study_id")
     private Long fieldOfStudyId;
