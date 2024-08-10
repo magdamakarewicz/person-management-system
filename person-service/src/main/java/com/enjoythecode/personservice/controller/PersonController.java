@@ -44,6 +44,7 @@ public class PersonController {
     private final PersonService personService;
     private final DataImportFromCsvService dataImportFromCsvService;
     private final PersonDtoConverterFactory personDtoConverterFactory;
+    private final ModelMapper modelMapper;
 
     @GetMapping
     @Operation(summary = "Get a list of people based on parameters", description = "This endpoint allows you to get " +
@@ -70,8 +71,6 @@ public class PersonController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(personDtoList);
     }
-
-    private final ModelMapper modelMapper;
 
     @GetMapping("/{id}")
     @Operation(summary = "Get a person by ID", description = "Retrieve a person by their ID")

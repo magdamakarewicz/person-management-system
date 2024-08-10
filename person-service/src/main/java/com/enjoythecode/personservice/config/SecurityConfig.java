@@ -1,5 +1,6 @@
 package com.enjoythecode.personservice.config;
 
+import com.enjoythecode.personservice.service.AppUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +13,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import com.enjoythecode.personservice.service.AppUserService;
 
 @Configuration
 @EnableWebSecurity
@@ -32,7 +32,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/people").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/people/import").hasAnyRole("ADMIN", "IMPORTER")
                         .requestMatchers(HttpMethod.POST, "/api/employees/*/positions").hasAnyRole("ADMIN", "EMPLOYEE")
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .httpBasic(Customizer.withDefaults())
                 .build();

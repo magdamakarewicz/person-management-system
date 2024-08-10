@@ -12,7 +12,7 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("UserServiceApplication")
+                        .title("PersonServiceApplication")
                         .version("1.0")
                         .description("Application provides a system that collects information about people."));
     }

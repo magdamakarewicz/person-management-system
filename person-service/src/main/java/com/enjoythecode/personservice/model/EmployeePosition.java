@@ -22,7 +22,7 @@ public class EmployeePosition {
     private Employee employee;
 
     /**
-     * ID of the person's type in the 'position' dictionary ('position' dictionary ID in dictionarydb is 2).
+     * ID of the employee's position in the 'position' dictionary ('position' dictionary ID in dictionarydb is 2).
      */
     @Column(name = "position_id")
     private Long positionId;

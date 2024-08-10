@@ -110,10 +110,6 @@ The Dictionary Service is a microservice within the Person Management System. It
 - **JUnit**: For testing.
 - **Lombok**: To reduce boilerplate code.
 
-## Known Issues and Upcoming Changes
-
-- **API Documentation**: There is currently an issue with generating API documentation. Swagger will soon be replaced by OpenAPI due to compatibility issues with the latest version of Spring. This transition will ensure continued support and enhanced features for API documentation.
-
 ## Setup and Installation
 
 ### Prerequisites

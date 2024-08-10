@@ -49,7 +49,7 @@ public class EmployeePositionService {
         boolean isStartDateValid = command.getStartDate().isAfter(employee.getEmploymentStartDate());
         if (!isStartDateValid)
             throw new IllegalEmploymentDateException(
-                    "Start date of the new position cannot be before employee's " + "employment start date: "
+                    "Start date of the new position cannot be before employee's employment start date: "
                             + employee.getEmploymentStartDate()
             );
         boolean isOverlap = existingPositions.stream()
@@ -80,13 +80,13 @@ public class EmployeePositionService {
 
     @Transactional(readOnly = true)
     public EmployeePosition getEmployeePositionById(Long employeeId, Long positionId) {
-        EmployeePosition currentPosition = getById(positionId);
-        if (!currentPosition.getEmployee().getId().equals(employeeId)) {
+        EmployeePosition position = getById(positionId);
+        if (!position.getEmployee().getId().equals(employeeId)) {
             throw new PositionNotBelongToEmployeeException(
                     "Position with id " + positionId + " does not belong " + "to the employee with id " + employeeId
             );
         }
-        return currentPosition;
+        return position;
     }
 
     public void deleteById(Long employeeId, Long positionId) {

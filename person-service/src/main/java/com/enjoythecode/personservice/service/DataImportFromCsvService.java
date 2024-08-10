@@ -65,8 +65,9 @@ public class DataImportFromCsvService {
                 future.completeExceptionally(new DataImportFromFileException("Error during data import. " +
                         "Invalid file content. Message: " + e.getMessage()));
             } finally {
-                if (!future.isCompletedExceptionally())
+                if (!future.isCompletedExceptionally()) {
                     importStatus.setCompleted(true);
+                }
                 importStatus.setInProgress(false);
                 importStatus.setEndTime(LocalDateTime.now());
                 future.complete(null);
