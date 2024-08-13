@@ -45,7 +45,7 @@ public interface DictionaryServiceClient {
      * @param name The name of the value to add to the dictionary.
      * @return A DictionarySimpleDto representing the updated 'types' dictionary.
      */
-    @PostMapping("/api/dictionaries/1/value")
-    DictionarySimpleDto addValueToTypeDictionary(@RequestBody @Valid @RequestParam String name);
+    @PostMapping("/api/dictionaries/1/values")
+    DictionarySimpleDto addValueToTypeDictionary(@Valid @RequestParam String name);
 
 }
