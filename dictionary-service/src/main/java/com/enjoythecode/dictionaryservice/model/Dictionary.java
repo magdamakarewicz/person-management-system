@@ -21,7 +21,7 @@ public class Dictionary {
 
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "dictionary")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "dictionary", cascade = CascadeType.ALL)
     private Set<DictionaryValue> dictionaryValues = new HashSet<>();
 
     public Dictionary(String name) {
